@@ -2,6 +2,7 @@ module.exports = function(RED) {
     'use strict';
     const request = require('request');
     const fs = require('fs');
+    const util = require('util');
 
 
 
@@ -29,6 +30,9 @@ module.exports = function(RED) {
 
         this.title = n.title;
         this.keys = RED.nodes.getCredentials(n.keys);
+
+        console.log(util.inspect(n));
+        console.log(util.inspect(this.keys));
 
         if (this.keys) {
             if (!this.keys.userKey) { throw 'No pushover user key'; }
